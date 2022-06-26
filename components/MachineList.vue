@@ -1,18 +1,10 @@
 <script setup>
-const url = "https://testspace.cdn.newt.so/v1/machines/machine"
+const url = "machines/machine"
 const { data: machines } = await useFetch(url , {
-    async beforeFetch(options) {
-        const token = "fLFjN6GH57KFa6Y8UoZqCIHPWZulyr-59Qe7C1xshQY"
-
-        options.headers = {
-            ...options.headers,
-            Authorization: `Bearer ${token}`,
-        }
-
-        return {
-            options,
-        }
-    },
+    baseURL: useRuntimeConfig().public.apiBase,
+    headers: {
+        Authorization: `Bearer fLFjN6GH57KFa6Y8UoZqCIHPWZulyr-59Qe7C1xshQY`
+    }
 })
 </script>
 
@@ -25,11 +17,22 @@ const { data: machines } = await useFetch(url , {
             v-for="machine in machines.items"
             :machine="machine"
         >
+            <!---
             <v-card-header>
                 <v-card-header-text>
                     <v-card-title>{{ machine.name }}</v-card-title>
                 </v-card-header-text>
             </v-card-header>
+            -->
+
+            <v-img
+                class="align-end text-black"
+                height="300"
+                v-bind:src="machine.image.src"
+                cover
+            >
+                <v-card-title>{{ machine.name }}</v-card-title>
+            </v-img>
 
             <v-card-text>
                 <v-table>
