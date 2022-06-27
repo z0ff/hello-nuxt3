@@ -21,9 +21,10 @@ const { data: machines } = await useFetch(url , {
                     max-width="500"
                 >
                     <v-img
-                        class="align-end text-black"
+                        class="align-end text-white"
                         height="300"
                         :src="machine.image.src"
+                        gradient="to top, black, 10%, rgba(0,0,0,0)"
                         cover
                     >
                         <v-card-title>{{ machine.name }}</v-card-title>

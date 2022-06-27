@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         apiSecret: '',
         public: {
-            apiBase: 'https://testspace.cdn.newt.so/v1/',
+            apiBase: '',
         }
     },
 
