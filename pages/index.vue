@@ -2,7 +2,9 @@
     <v-app>
         <v-main>
             <AppBar />
-            <MachineList />
+            <v-container>
+                <MachineList />
+            </v-container>
         </v-main>
     </v-app>
 </template>

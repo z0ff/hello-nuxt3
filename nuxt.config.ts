@@ -4,7 +4,7 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
 
     runtimeConfig: {
-        apiSecret: 'fLFjN6GH57KFa6Y8UoZqCIHPWZulyr-59Qe7C1xshQY',
+        apiSecret: '',
         public: {
             apiBase: 'https://testspace.cdn.newt.so/v1/',
         }
@@ -33,5 +33,7 @@ export default defineNuxtConfig({
             }
         }
     },
+
+    target: 'static',
 
 })
