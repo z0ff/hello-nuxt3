@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt'
+import { Content } from 'newt-client-js'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -11,8 +12,8 @@ export default defineNuxtConfig({
     },
 
     typescript: {
-    shim: false,
-    strict: true
+        shim: false,
+        strict: true
     },
 
     css: [

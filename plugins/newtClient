@@ -1,0 +1,33 @@
+import { defineNuxtPlugin } from '#app'
+import { createClient, Content } from 'newt-client-js'
+
+export interface Image {
+    _id: string
+    fileName: string
+    fileSize: string
+    fileType: string
+    height: Number
+    width: Number
+    src: string
+}
+
+export interface Machine extends Content {
+    name: string
+    usage: string
+    os: string
+    cpu: string
+    gpu: string
+    ram: Number
+    storage: Number
+    image: Image
+}
+
+export default defineNuxtPlugin((nuxtApp) => {
+    const client = createClient({
+        spaceUid: useRuntimeConfig().public.apiBase,
+        token: useRuntimeConfig().apiSecret,
+        apiType: 'cdn' // You can specify "cdn" or "api".
+    })
+
+    inject('newt', client);
+})

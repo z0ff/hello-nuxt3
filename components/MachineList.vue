@@ -1,11 +1,37 @@
-<script setup>
+<script setup lang="ts">
+
+import { Contents, Content } from 'newt-client-js'
+
+interface Image {
+    _id: string
+    fileName: string
+    fileSize: string
+    fileType: string
+    height: Number
+    width: Number
+    src: string
+}
+
+interface Machine extends Content {
+    name: string
+    usage: string
+    os: string
+    cpu: string
+    gpu: string
+    ram: Number
+    storage: Number
+    image: Image
+}
+
 const url = "machines/machine";
-const { data: machines } = await useFetch(url , {
+
+const { data: machines } = await useFetch<Contents<Machine>>(url , {
     baseURL: useRuntimeConfig().public.apiBase,
     headers: {
-        Authorization: `Bearer ` + useRuntimeConfig().apiSecret,
+        Authorization: `Bearer ${useRuntimeConfig().apiSecret}`,
     }
 });
+
 </script>
 
 <template>
@@ -14,7 +40,10 @@ const { data: machines } = await useFetch(url , {
         <v-row no-gutters>
             <v-col
                 cols="12" sm="12" md="6" xl="4"
+                align="center"
+                v-if="machines"
                 v-for="machine in machines.items"
+                :key="machine._id"
             >
                 <v-card
                     class="ma-2 ma-md-5"
@@ -24,7 +53,7 @@ const { data: machines } = await useFetch(url , {
                         class="align-end text-white"
                         height="300"
                         :src="machine.image.src"
-                        gradient="to top, black, 10%, rgba(0,0,0,0)"
+                        gradient="to top, black, 30%, rgba(0,0,0,0)"
                         cover
                     >
                         <v-card-title>{{ machine.name }}</v-card-title>
