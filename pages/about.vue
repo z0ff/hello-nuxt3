@@ -1,5 +1,5 @@
 <template>
     <NuxtLayout>
-        <MachineList />
+        hello
     </NuxtLayout>
 </template>
