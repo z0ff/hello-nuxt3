@@ -1,3 +1,9 @@
+<script setup>
+useHead({
+    title: 'Under construction',
+})
+</script>
+
 <template>
     <NuxtLayout>
         <v-container class="fill-height" fluid>

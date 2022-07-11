@@ -65,6 +65,7 @@ const items = [
 
     <v-navigation-drawer
         app
+        temporary
         class="hidden-md-and-up"
         v-model="drawer"
     >
