@@ -25,7 +25,7 @@ interface Machine extends Content {
 
 const url = "machines/machine";
 
-const { data: machines } = await useFetch<Contents<Machine>>(url , {
+const { data: machines } = await useLazyFetch<Contents<Machine>>(url , {
     baseURL: useRuntimeConfig().public.apiBase,
     headers: {
         Authorization: `Bearer ${useRuntimeConfig().apiSecret}`,
@@ -53,6 +53,7 @@ const { data: machines } = await useFetch<Contents<Machine>>(url , {
                         class="align-end text-white"
                         height="300"
                         :src="machine.image.src"
+                        lazy-src="placeholder_machine.png"
                         gradient="to top, black, 30%, rgba(0,0,0,0)"
                         cover
                     >
