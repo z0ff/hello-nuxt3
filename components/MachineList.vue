@@ -25,12 +25,27 @@ interface Machine extends Content {
 
 const url = "machines/machine";
 
+/*
 const { data: machines } = await useLazyFetch<Contents<Machine>>(url , {
     baseURL: useRuntimeConfig().public.apiBase,
     headers: {
         Authorization: `Bearer ${useRuntimeConfig().apiSecret}`,
     }
 });
+*/
+const { data: machines } = await useAsyncData<Contents<Machine>>('machine', () =>
+    $fetch(
+        `${useRuntimeConfig().public.apiBase}${url}`,
+        {
+            headers: {
+                Authorization: `Bearer ${useRuntimeConfig().apiSecret}`
+            }
+        }
+    ),
+    {
+        initialCache: false
+    }
+)
 
 </script>
 
